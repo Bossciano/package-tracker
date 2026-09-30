@@ -1,0 +1,24 @@
+# cPanel Deployment Checklist
+
+- [ ] Create MySQL database and user
+- [ ] Upload Laravel project outside `public_html`
+- [ ] Upload `public/` contents into `public_html`
+- [ ] Fix `public_html/index.php` paths
+- [ ] Create production `.env`
+- [ ] Set `APP_DEBUG=false`
+- [ ] Configure database
+- [ ] Configure SMTP
+- [ ] Run `composer install --no-dev --optimize-autoloader`
+- [ ] Run `php artisan migrate --force`
+- [ ] Run `php artisan storage:link`
+- [ ] Run `php artisan optimize`
+- [ ] Enable SSL
+- [ ] Create admin account
+- [ ] Test public tracking
+- [ ] Test invalid tracking number
+- [ ] Test admin login
+- [ ] Test shipment creation
+- [ ] Test valid/invalid status transitions
+- [ ] Test customer notification email
+- [ ] Test audit history
+- [ ] Confirm database backup process

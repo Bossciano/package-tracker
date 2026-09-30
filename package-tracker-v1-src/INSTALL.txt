@@ -1,0 +1,15 @@
+PACKAGE TRACKER V1
+
+This is the source deployment package.
+
+1. Extract.
+2. Run composer install.
+3. Copy .env.example to .env.
+4. Configure MySQL, APP_URL and SMTP.
+5. Run php artisan key:generate.
+6. Run php artisan migrate.
+7. Set ADMIN_EMAIL and ADMIN_PASSWORD, then run the DatabaseSeeder.
+8. For cPanel, expose only the contents of public/ through public_html.
+9. Keep the application directory outside public_html.
+
+See README.md and DEPLOYMENT_CHECKLIST.md.

@@ -1,0 +1,4 @@
+<?php
+namespace Tests\Feature;
+use App\Enums\ShipmentStatus; use App\Models\Customer; use App\Models\Shipment; use App\Services\ShipmentStatusService; use Illuminate\Foundation\Testing\RefreshDatabase; use InvalidArgumentException; use Tests\TestCase;
+class ShipmentStatusTest extends TestCase {use RefreshDatabase; public function test_valid_transition_is_allowed():void{$s=Shipment::factory()->create(['customer_id'=>Customer::factory()->create()->id,'status'=>ShipmentStatus::PENDING]);$result=app(ShipmentStatusService::class)->changeStatus($s,ShipmentStatus::PACKAGE_RECEIVED,null,'Received',request());$this->assertSame(ShipmentStatus::PACKAGE_RECEIVED,$result->status);}public function test_invalid_transition_is_rejected():void{$this->expectException(InvalidArgumentException::class);$s=Shipment::factory()->create(['status'=>ShipmentStatus::PENDING]);app(ShipmentStatusService::class)->changeStatus($s,ShipmentStatus::DELIVERED,null,null,request());}}
